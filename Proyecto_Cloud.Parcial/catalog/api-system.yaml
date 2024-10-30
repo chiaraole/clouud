@@ -1,0 +1,317 @@
+openapi: 3.0.1
+info:
+  title: "API de Alumnos"
+  description: "Esta API permite gestionar los alumnos. Permite operaciones CRUD completas."
+  version: "1.0.0"
+servers:
+  - url: "http://localhost:8000"
+paths:
+  /students:
+    get:
+      summary: "Obtener todos los alumnos"
+      description: "Recupera una lista de todos los alumnos."
+      responses:
+        '200':
+          description: "Operación exitosa"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Student'
+    post:
+      summary: "Agregar un nuevo alumno"
+      description: "Agrega un nuevo alumno a la base de datos."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '201':
+          description: "Alumno agregado exitosamente"
+        '400':
+          description: "Entrada no válida"
+  /students/{id}:
+    get:
+      summary: "Obtener un alumno por ID"
+      description: "Recupera los detalles de un alumno específico por su ID."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Operación exitosa"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Student'
+        '404':
+          description: "Alumno no encontrado"
+    put:
+      summary: "Actualizar un alumno"
+      description: "Actualiza los detalles de un alumno específico por su ID."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Student'
+      responses:
+        '200':
+          description: "Alumno actualizado exitosamente"
+        '400':
+          description: "Entrada no válida"
+        '404':
+          description: "Alumno no encontrado"
+    delete:
+      summary: "Eliminar un alumno"
+      description: "Elimina un alumno específico por su ID."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Alumno eliminado exitosamente"
+        '404':
+          description: "Alumno no encontrado"
+  /professors:
+    get:
+      summary: "Obtener todos los profesores"
+      description: "Recupera una lista de todos los profesores."
+      responses:
+        '200':
+          description: "Operación exitosa"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Professor'
+    post:
+      summary: "Agregar un nuevo profesor"
+      description: "Agrega un nuevo profesor a la base de datos."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Professor'
+      responses:
+        '201':
+          description: "Profesor agregado exitosamente"
+        '400':
+          description: "Entrada no válida"
+  /professors/{id}:
+    get:
+      summary: "Obtener un profesor por ID"
+      description: "Recupera los detalles de un profesor específico por su ID."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Operación exitosa"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Professor'
+        '404':
+          description: "Profesor no encontrado"
+    put:
+      summary: "Actualizar un profesor"
+      description: "Actualiza los detalles de un profesor específico por su ID."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Professor'
+      responses:
+        '200':
+          description: "Profesor actualizado exitosamente"
+        '400':
+          description: "Entrada no válida"
+        '404':
+          description: "Profesor no encontrado"
+    delete:
+      summary: "Eliminar un profesor"
+      description: "Elimina un profesor específico por su ID."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Profesor eliminado exitosamente"
+        '404':
+          description: "Profesor no encontrado"
+  /classes:
+    get:
+      summary: "Obtener todas las clases"
+      description: "Recupera una lista de todas las clases."
+      responses:
+        '200':
+          description: "Operación exitosa"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Class'
+    post:
+      summary: "Agregar una nueva clase"
+      description: "Agrega una nueva clase a la base de datos."
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Class'
+      responses:
+        '201':
+          description: "Clase agregada exitosamente"
+        '400':
+          description: "Entrada no válida"
+  /classes/{id}:
+    get:
+      summary: "Obtener una clase por ID"
+      description: "Recupera los detalles de una clase específica por su ID."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Operación exitosa"
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Class'
+        '404':
+          description: "Clase no encontrada"
+    put:
+      summary: "Actualizar una clase"
+      description: "Actualiza los detalles de una clase específica por su ID."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Class'
+      responses:
+        '200':
+          description: "Clase actualizada exitosamente"
+        '400':
+          description: "Entrada no válida"
+        '404':
+          description: "Clase no encontrada"
+    delete:
+      summary: "Eliminar una clase"
+      description: "Elimina una clase específica por su ID."
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: "Clase eliminada exitosamente"
+        '404':
+          description: "Clase no encontrada"
+components:
+  schemas:
+    Student:
+      type: object
+      required:
+        - name
+        - lastname
+        - degree
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "John"
+        lastname:
+          type: string
+          example: "Doe"
+        degree:
+          type: integer
+          example: 1
+    Professor:
+      type: object
+      required:
+        - name
+        - lastname
+        - email
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Jane"
+        lastname:
+          type: string
+          example: "Smith"
+        email:
+          type: string
+          example: "jane.smith@example.com"
+    Class:
+      type: object
+      required:
+        - name
+        - id_alumno
+        - id_profesor
+        - degree
+      properties:
+        id:
+          type: integer
+          example: 1
+        name:
+          type: string
+          example: "Mathematics"
+        id_alumno:
+          type: integer
+          example: 1
+        id_profesor:
+          type: integer
+          example: 1
+        degree:
+          type: integer
+          example: 1

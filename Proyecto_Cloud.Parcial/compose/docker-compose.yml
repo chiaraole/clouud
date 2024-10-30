@@ -1,0 +1,23 @@
+ version: "3.3"
+
+ services:
+   alumnos:
+     build: ./alumnos
+     image: aarontimana04/alumnos
+     ports:
+       - 8000:8000
+   profesores:
+     build: ./profesores
+     image: aarontimana04/profesores
+     ports:
+       - 8080:80
+   clases:
+     build: ./clases
+     image: aarontimana04/clases
+     ports:
+       - 8081:8001 
+   frontend:
+     build: ./frontend
+     image: aarontimana04/frontend
+     ports:
+       - 8084:80
